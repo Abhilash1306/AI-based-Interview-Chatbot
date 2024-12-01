@@ -1,0 +1,31 @@
+question,expected_answer,follow_up
+What do you like most about Python?,It is versatile and has many libraries,Why do you like Python's versatility? | Can you provide an example of Python libraries that you find most useful?
+What is your favorite feature in Python?,Its simplicity and readability,Why is simplicity your favorite feature? | How do you leverage Python's readability in your projects?
+How do you handle exceptions in Python?,Using try-except blocks,Can you explain how you implement try-except blocks? | What challenges have you faced while handling exceptions in Python?
+What are Python decorators?,Functions that modify the behavior of other functions,Can you provide an example of a Python decorator? | Why do you think decorators are useful in programming?
+How does Python manage memory?,Using garbage collection,How does garbage collection affect performance in Python? | Can you explain the role of garbage collection in resource management?
+What is a Python generator?,A function that yields values lazily,How is a generator different from a normal function? | Can you share a use case where you used a generator?
+How do you handle file I/O in Python?,Using open(),How do you ensure safe file handling using open()? | Can you share an example of efficient file I/O operations?
+What is Python's GIL?,Global Interpreter Lock,What are the limitations imposed by the GIL? | How does the GIL affect Python's multithreading?
+What are Python's data structures?,Lists, dictionaries, sets, and tuples,Which data structure do you use most frequently? | How do Python's data structures compare to those in other languages?
+What is the difference between Python 2 and 3?,Improved features in Python 3,Why did the transition to Python 3 become significant? | What challenges arise when migrating between Python 2 and 3?
+What is the purpose of virtual environments in Python?,To isolate dependencies,How do you create a virtual environment? | Why are virtual environments critical in development workflows?
+What is the significance of Python's PEP 8?,It is the style guide for Python,How does PEP 8 improve code readability? | Why is adhering to PEP 8 important in collaborative projects?
+What is the difference between mutable and immutable objects in Python?,Mutable objects can be modified, immutable cannot,Why does understanding mutability matter in programming? | Can you give examples of mutable and immutable objects in Python?
+How does Python handle multithreading?,Using the threading module,What are the limitations of multithreading in Python? | Can you explain multithreading with a practical example?
+How do you optimize Python code?,Using tools like NumPy and list comprehensions,Why is code optimization important? | Can you provide an example where you optimized Python code?
+What is your favorite feature in C?,Its performance and low-level memory control,Why do you value performance in C? | How do you use C's memory control features in your projects?
+What are pointers in C?,Variables that store memory addresses,How do you use pointers effectively in your projects? | Can you explain a practical use of pointers?
+What is the difference between malloc() and calloc()?,calloc() initializes memory,Why is memory initialization important in dynamic allocation? | Can you share a scenario where you used malloc() or calloc()?
+What is a structure in C?,A user-defined data type,How do structures differ from classes in C++? | Where have you used structures in your projects?
+What is a union in C?,A special data type for storing different data types in the same memory,How does a union save memory? | Can you share an example of a use case for unions?
+How do you handle dynamic memory in C?,Using malloc() and free(),Why is proper memory management critical in C? | How do you prevent memory leaks in dynamic memory handling?
+What is a segmentation fault?,An invalid memory access,What are common causes of segmentation faults? | How do you debug segmentation faults effectively?
+What is recursion in C?,A function that calls itself,How do you ensure recursion doesn't cause stack overflow? | Can you provide a practical use case for recursion?
+What is a linked list?,A data structure with nodes,How does a linked list differ from arrays? | Can you explain how to implement a linked list?
+What is the difference between stack and heap memory?,Stack is for local variables, heap is for dynamic allocation,Why is the distinction between stack and heap important? | Can you share an example of using stack and heap memory?
+What are preprocessors in C?,Directives for compilation,What are common preprocessor directives? | How do preprocessors simplify coding in C?
+What is the purpose of header files in C?,To declare functions and macros,How do header files improve modularity? | Can you give examples of functions declared in header files?
+What are bitwise operators in C?,Operators that manipulate bits,Where do you use bitwise operators? | Why are bitwise operators important in embedded systems?
+What are inline functions in C?,Functions that are expanded in place,Why are inline functions faster? | Can you provide an example of using inline functions?
+What are volatile variables in C?,Variables that can change unexpectedly,Why is it important to use volatile variables? | Can you explain a scenario where you used volatile variables?
