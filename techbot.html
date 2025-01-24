@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Chat Container */
+        .chat-container {
+            width: 90%;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            background: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        header p {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            opacity: 0.8;
+        }
+
+        /* Chat Box */
+        .chat-box {
+            padding: 15px;
+            height: 400px;
+            overflow-y: scroll;
+            border-bottom: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        /* Chat Messages */
+        .chat-message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .chat-message.user {
+            justify-content: flex-end;
+        }
+
+        .chat-message.bot {
+            justify-content: flex-start;
+        }
+
+        .chat-message .bubble {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        .chat-message.user .bubble {
+            background: #007BFF;
+            color: white;
+            border-bottom-right-radius: 0;
+        }
+
+        .chat-message.bot .bubble {
+            background: #f1f1f1;
+            color: #333;
+            border-bottom-left-radius: 0;
+        }
+
+        /* Chat Form */
+        #chat-form {
+            display: flex;
+            padding: 10px;
+            background: #f4f4f4;
+        }
+
+        #chat-form input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        #chat-form button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        #chat-form button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <header>
+            <h1>Interview Chatbot</h1>
+            <p>Practice technical, HR, managerial, and situation-based questions</p>
+        </header>
+        <div class="chat-box" id="chat-box">
+            <!-- Chat messages will be dynamically added here -->
+        </div>
+        <form id="chat-form">
+            <input type="text" id="user-input" placeholder="Type your question here..." autocomplete="off" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script>
+        // DOM Elements
+        const chatBox = document.getElementById("chat-box");
+        const chatForm = document.getElementById("chat-form");
+        const userInput = document.getElementById("user-input");
+
+        // Function to add a chat message
+        function addMessage(content, sender) {
+            const message = document.createElement("div");
+            message.classList.add("chat-message", sender);
+            const bubble = document.createElement("div");
+            bubble.classList.add("bubble");
+            bubble.textContent = content;
+            message.appendChild(bubble);
+            chatBox.appendChild(message);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Handle form submission
+        chatForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const userQuery = userInput.value.trim();
+
+            if (userQuery === "") return;
+
+            // Add the user's message to the chat
+            addMessage(userQuery, "user");
+            userInput.value = "";
+
+            try {
+                // Send the query to the backend API
+                const response = await fetch("/chatbot_query", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ query: userQuery }),
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch response from the server");
+                }
+
+                const data = await response.json();
+
+                // Add the bot's response to the chat
+                addMessage(data.response, "bot");
+            } catch (error) {
+                console.error("Error:", error);
+                addMessage("Oops! Something went wrong. Please try again.", "bot");
+            }
+        });
+    </script>
+</body>
+</html>

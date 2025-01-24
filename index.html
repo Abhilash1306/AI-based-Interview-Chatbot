@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-based Chatbot</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e2f;
+            color: #fff;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2a2a3b;
+            padding: 15px 30px;
+            color: #fff;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .profile-icon {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: #333;
+            border-radius: 8px;
+            padding: 10px;
+            width: 200px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-dropdown div {
+            margin: 10px 0;
+        }
+
+        .profile-dropdown div:hover {
+            background-color: #444;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Main Content */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: row;
+            background-color: #2a2a3b;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card-content h2 {
+            margin: 0;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .card-content p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .card-content button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card-content button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>AI-based Chatbot</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- First Card -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='chatbot.jpg') }}" alt="AI Practice Image">
+            <div class="card-content">
+                <h2>Get Interview Practice with AI-powered Chatbot</h2>
+                <p>Prepare yourself with our smart AI chatbot to ace your interviews. Get real-time feedback and improve your skills effortlessly.</p>
+                <button onclick="navigateToChatbot()">Practice Now</button>
+            </div>
+        </div>
+
+        <!-- Second Card -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='techbot.png') }}" alt="Doubt Assistance Image">
+            <div class="card-content">
+                <h2>Any doubts?? Ask with AI Chatbot</h2>
+                <p>Resolve your doubts instantly with our AI chatbot. Simply ask your question and get accurate answers tailored to your needs.</p>
+                <button onclick="navigateToTechnobot()">Ask Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle profile dropdown
+        function toggleProfileDropdown() {
+            const dropdown = document.getElementById("profile-dropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
+        // Navigate to chatbot page
+        function navigateToChatbot() {
+            window.location.href = "/chatbot";
+        }
+
+        function navigateToTechnobot() {
+            window.location.href = "/techbot";
+        }
+
+        // Logout function
+        function logout() {
+            alert("Logged out successfully!");
+            // Add logout logic here
+        }
+    </script>
+</body>
+</html>
